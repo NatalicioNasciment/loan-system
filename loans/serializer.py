@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from .models import Loans
 
 class LoanSerializer(serializers.Serializer):
     identifier = serializers.IntegerField()
@@ -9,3 +9,9 @@ class LoanSerializer(serializers.Serializer):
     request_date = serializers.DateTimeField()
     bank = serializers.CharField(max_length=100)
     client = serializers.CharField(max_length=100)
+
+    def create(self, validated_data):
+        """
+        Create and return a new `Loan` instance, given the validated data.
+        """
+        return Loans.objects.create(**validated_data)
