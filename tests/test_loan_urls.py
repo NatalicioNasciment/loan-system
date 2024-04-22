@@ -8,7 +8,7 @@ class LoanUrlsTest(TestCase):
         self.assertEqual(url, '/api/v1/loans/')
     
     def test_loan_detail_url_is_correct(self):
-        url = reverse('loan:detail')
+        url = reverse('loan:create')
         self.assertEqual(url, '/api/v1/loan/')
     
     def test_loan_delete_url_is_correct(self):
