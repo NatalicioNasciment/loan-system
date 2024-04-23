@@ -8,6 +8,11 @@ class LoanViewTest(TestCase):
         view = resolve(reverse('loan:all'))
         self.assertIs(view.func, views.list_all_loans)
     
+    def test_loan_list_all_view_return_status_code_200_Ok(self):
+        response = self.client.get(reverse('loan:all'))
+        self.assertEqual(response.status_code, 200)
+        #TODO: fix the return 401
+    
     def test_loan_create_view_function_is_correct(self):
         view = resolve(reverse('loan:create'))
         self.assertIs(view.func, views.create_loan)
